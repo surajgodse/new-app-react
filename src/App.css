@@ -1,38 +1,162 @@
-.App {
-  text-align: center;
+/* General Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  margin: 0;
+  padding: 0;
+  color: #e0e0e0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-container {
+  padding: 20px;
+  background-color: rgba(40, 40, 40, 0.9);
   min-height: 100vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  margin: 20px;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.news-form {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.news-form select,
+.news-form input[type="submit"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.news-form select {
+  width: 175px;
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23e0e0e0" d="M2 0L0 2h4zM2 5L0 3h4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px 12px;
+}
+
+.news-form select:hover {
+  background-color: #4a4a4a;
+}
+
+.news-form input[type="submit"] {
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+}
+
+.news-form input[type="submit"]:hover {
+  background-color: #3a7bc8;
+}
+
+.results-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.result {
+  margin-bottom: 20px;
+  border: 2px solid #444;
+  padding: 20px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.result:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  background-color: #3a3a3a;
+}
+
+.result h2 {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.result p {
+  margin: 5px 0;
+  color: #c0c0c0;
+}
+
+.result a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  color: #fff;
+  background-color: #4a90e2;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.result a:hover {
+  background-color: #3a7bc8;
+  transform: scale(1.05);
+}
+
+footer {
+  margin-top: 20px;
+  padding: 20px 0;
+  width: 100%;
+  background-color: #aeaaaa;
+  border-top: 1px solid #444;
+  color: #180b0b;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+footer a {
+  margin: 0 10px;
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #3a7bc8;
+}
+
+footer img {
+  margin-top: 15px;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
 }
