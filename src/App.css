@@ -1,162 +1,122 @@
-/* General Styling */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a2e;
   color: #e0e0e0;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .app-container {
-  padding: 20px;
-  background-color: rgba(40, 40, 40, 0.9);
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  margin: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 h1 {
-  color: #ffffff;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
   text-align: center;
-  font-weight: bold;
-}
-
-.news-form {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.news-form select,
-.news-form input[type="submit"] {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #555;
-  border-radius: 5px;
-  outline: none;
+  padding: 20px;
+  background-color: #16213e;
+  margin: 0;
+  color: #ffffff;
+  border-bottom: 2px solid #0f3460;
   transition: all 0.3s ease;
 }
 
-.news-form select {
-  width: 175px;
-  background-color: #3a3a3a;
-  color: #e0e0e0;
+h1:hover {
+  background-color: #1c2850;
+  transform: scale(1.02);
+}
+
+.news-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #16213e;
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #0f3460;
+  color: #ffffff;
+  border: 1px solid #e94560;
   cursor: pointer;
-  appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23e0e0e0" d="M2 0L0 2h4zM2 5L0 3h4z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 12px 12px;
+  transition: all 0.3s ease;
 }
 
-.news-form select:hover {
-  background-color: #4a4a4a;
-}
-
-.news-form input[type="submit"] {
-  background-color: #4a90e2;
-  color: white;
-  cursor: pointer;
-}
-
-.news-form input[type="submit"]:hover {
-  background-color: #3a7bc8;
+select:hover {
+  background-color: #14467e;
+  border-color: #ff6b8b;
 }
 
 .results-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #1a1a2e;
 }
 
 .result {
+  background-color: #16213e;
   margin-bottom: 20px;
-  border: 2px solid #444;
   padding: 20px;
-  width: 100%;
-  background-color: #333;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 5px;
+  border-left: 4px solid #e94560;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .result:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  background-color: #3a3a3a;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(233, 69, 96, 0.2);
+  background-color: #1c2850;
 }
 
 .result h2 {
-  margin: 0 0 10px;
-  color: #ffffff;
-  font-size: 1.5rem;
+  color: #e94560;
+  transition: color 0.3s ease;
 }
 
-.result p {
-  margin: 5px 0;
-  color: #c0c0c0;
+.result:hover h2 {
+  color: #ff6b8b;
 }
 
 .result a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  color: #fff;
-  background-color: #4a90e2;
-  border-radius: 5px;
+  color: #00fff5;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .result a:hover {
-  background-color: #3a7bc8;
-  transform: scale(1.05);
+  color: #66fff2;
+  text-decoration: underline;
 }
 
 footer {
-  margin-top: 20px;
-  padding: 20px 0;
-  width: 100%;
-  background-color: #aeaaaa;
-  border-top: 1px solid #444;
-  color: #180b0b;
+  background-color: #16213e;
+  color: #ffffff;
   text-align: center;
-}
-
-footer p {
-  margin: 0;
-  font-size: 1rem;
+  padding: 20px;
+  margin-top: auto;
+  border-top: 2px solid #0f3460;
 }
 
 footer a {
   margin: 0 10px;
-  color: #4a90e2;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-footer a:hover {
-  color: #3a7bc8;
+  transition: all 0.3s ease;
 }
 
 footer img {
-  margin-top: 15px;
   width: 30px;
   height: 30px;
-  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+footer a:hover img {
+  transform: scale(1.2);
 }

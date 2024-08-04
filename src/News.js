@@ -1,25 +1,39 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Result from "./Result";
-import "./App.css";  // Import the CSS file
+import "./App.css";
 
 export default function News() {
     const [info, setInfo] = useState([]);
     const [category, setCategory] = useState("all");
 
-    const categories = ["all", "business", "entertainment", "general", "health", "science", "sports", "technology"];
+    const categories = ["all", "business", "entertainment", "politics", "health", "science", "sports", "technology"];
 
     const fetchNews = (selectedCategory = "all") => {
-        const categoryQuery = selectedCategory !== "all" ? `&category=${selectedCategory}` : "";
-        const url = `https://newsapi.org/v2/top-headlines?country=in${categoryQuery}&apiKey=6a37849b182047839bd5bbcf6cc6e5c3`;
+        const apiKey = "pub_50045cceef4ca19689d1d5e60f4cbdb72c4f7"; // Replace with your actual API key
+        let url = `https://newsdata.io/api/1/news?apikey=${apiKey}&country=us`;
+
+        if (selectedCategory !== "all") {
+            url += `&category=${selectedCategory}`;
+        }
 
         axios.get(url)
-            .then(res => setInfo(res.data.articles))
-            .catch(err => alert("issue" + err));
+            .then(res => {
+                if (res.data && res.data.results) {
+                    setInfo(res.data.results);
+                } else {
+                    console.error("Unexpected API response structure:", res.data);
+                    setInfo([]);
+                }
+            })
+            .catch(err => {
+                console.error("Error fetching news:", err);
+                alert("There was an issue fetching the news. Please try again later.");
+            });
     };
 
     useEffect(() => {
-        fetchNews(category); // Fetch news based on the current category when the component mounts or category changes
+        fetchNews(category);
     }, [category]);
 
     const handleCategoryChange = (e) => {
@@ -32,7 +46,9 @@ export default function News() {
             <form className="news-form">
                 <select value={category} onChange={handleCategoryChange}>
                     {categories.map(cat => (
-                        <option key={cat} value={cat}>{cat === "all" ? "All Categories" : cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
+                        <option key={cat} value={cat}>
+                            {cat === "all" ? "All Categories" : cat.charAt(0).toUpperCase() + cat.slice(1)}
+                        </option>
                     ))}
                 </select>
             </form>
@@ -41,10 +57,10 @@ export default function News() {
                     <Result
                         key={index}
                         title={e.title}
-                        url={e.url}
+                        url={e.link}
                         description={e.description}
-                        author={e.author}
-                        publishedAt={e.publishedAt}
+                        author={e.creator}
+                        publishedAt={e.pubDate}
                     />
                 ))}
             </div>
